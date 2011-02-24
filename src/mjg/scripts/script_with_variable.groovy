@@ -1,0 +1,3 @@
+package mjg.scripts
+
+ok
