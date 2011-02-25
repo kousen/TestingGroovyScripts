@@ -19,3 +19,6 @@ be set by an external binding.
 The test class runs all three scripts and shows that they work. See the
 blog post at http://kousenit.wordpress.com/2011/02/24/testing-groovy-scripts/
 for details.
+
+UPDATE: Based on advice from Guillaume Laforge, updated the tests to
+set the out variable on the binding, rather than change System.out.

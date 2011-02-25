@@ -2,28 +2,20 @@ package mjg.scripts
 
 import static org.junit.Assert.*
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.Before
+import org.junit.Test
 
 class ScriptTests {
     GroovyShell shell
     Binding binding
-    PrintStream orig
-    ByteArrayOutputStream out
+    StringWriter content
     
     @Before
     void setUp() {
-        orig = System.out
-        out = new ByteArrayOutputStream()
-        System.setOut(new PrintStream(out))
+        content = new StringWriter()
         binding = new Binding()
+        binding.out = new PrintWriter(content)
         shell = new GroovyShell(binding)
-    }
-    
-    @After
-    void tearDown() {
-        System.setOut(orig)
     }
     
     @Test
@@ -48,7 +40,7 @@ class ScriptTests {
     @Test
     void testHelloWorld() {
         shell.evaluate(new File("src/mjg/scripts/hello_world.groovy"))
-        assertEquals "Hello, World!", out.toString().trim()
+        assertEquals "Hello, World!", content.toString().trim()
     }    
     
 }
